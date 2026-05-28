@@ -1,0 +1,23 @@
+---
+interface Props {
+  user?: string;
+  slug?: string;
+  href?: string;
+  title?: string;
+}
+
+const { user, slug, href, title = 'CodePen demo' } = Astro.props;
+const iframeSrc = user && slug ? `https://codepen.io/${user}/embed/${slug}?default-tab=result` : '';
+const penHref = href || (user && slug ? `https://codepen.io/${user}/pen/${slug}` : 'https://codepen.io/daltonwalsh');
+---
+
+<div class:list={['codepen-embed', !iframeSrc && 'codepen-embed--fallback']}>
+  {
+    iframeSrc ? (
+      <iframe src={iframeSrc} title={title} loading="lazy" allowfullscreen></iframe>
+    ) : (
+      <p>{title}</p>
+    )
+  }
+  <p><a href={penHref} rel="noopener noreferrer" target="_blank">Open this demo on CodePen</a></p>
+</div>

@@ -1,0 +1,27 @@
+---
+interface GalleryImage {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  images?: GalleryImage[];
+  label?: string;
+}
+
+const { images = [], label = 'Image gallery' } = Astro.props;
+---
+
+{
+  images.length > 0 && (
+    <div class="gallery-snap" aria-label={label} tabindex="0">
+      {images.map((image) => (
+        <figure class="gallery-snap__item">
+          <img src={image.src} alt={image.alt || ''} loading="lazy" />
+          {image.caption && <figcaption>{image.caption}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  )
+}

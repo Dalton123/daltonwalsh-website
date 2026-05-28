@@ -1,0 +1,175 @@
+---
+import PortfolioCard from '../components/PortfolioCard.astro';
+import Layout from '../layouts/Layout.astro';
+import {
+  canonicalForRoute,
+  descriptionForItem,
+  formatDate,
+  getBlogPosts,
+  getPage,
+  getPortfolioItems,
+  imageForItem,
+  ogImageForItem,
+  titleForItem,
+} from '../lib/content';
+
+const page = getPage('home');
+const posts = getBlogPosts();
+const workItems = getPortfolioItems();
+const featuredWork = [
+  workItems.find((item) => item.slug === 'flyball-hub-next-js-typescript-supabase-pwa-app'),
+  workItems.find((item) => item.slug === 'next-js-website-wilkinsoncounselling'),
+].filter(Boolean);
+const supportingWork = workItems
+  .filter((item) => !featuredWork.some((featured) => featured?.slug === item.slug))
+  .slice(0, 3);
+const featuredPost = posts.find((post) => post.slug === 'my-react-projects') || posts[0];
+const latestPosts = posts.slice(0, 4);
+const portrait = '/media/2021/03/image-1-768x606.jpg';
+---
+
+<Layout
+  title={titleForItem(page, 'Dalton Walsh')}
+  description={descriptionForItem(page)}
+  canonical={canonicalForRoute('/')}
+  ogImage={ogImageForItem(page)}
+  bodyClass="home-template"
+>
+  <main id="main" class="page-main">
+    <section class="home-hero">
+      <div class="container home-hero__inner">
+        <div class="home-hero__content">
+          <p class="eyebrow">Frontend developer</p>
+          <h1>Building useful, readable websites with a bit of personality.</h1>
+          <p class="home-hero__intro">
+            I’m Dalton Walsh, a Manchester-based frontend developer working with React, Next.js, Tailwind,
+            Astro and Shopify/Liquid. I like clean interfaces, practical tutorials, and personal projects
+            that solve real problems.
+          </p>
+          <div class="home-hero__actions">
+            <a class="button" href="/work/">View Work</a>
+            <a class="text-link" href="/blog/">Read The Blog</a>
+          </div>
+        </div>
+        <aside class="home-hero__note" aria-label="Current focus">
+          <img src={portrait} alt="Dalton Walsh" width="768" height="606" fetchpriority="high" />
+          <div>
+            <p class="home-hero__label">Current focus</p>
+            <p>
+              Frontend work across React, Next.js and Shopify themes, with more writing and personal project
+              notes planned around the things I’m learning.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="home-section home-section--split">
+      <div class="container home-split">
+        <div>
+          <p class="eyebrow">How I work</p>
+          <h2>Dev-first, detail-minded, and still curious.</h2>
+        </div>
+        <div class="home-copy">
+          <p>
+            My background runs through email development, WordPress builds, modern React projects and
+            Shopify frontend work. The common thread is simple: I care about interfaces that are maintainable,
+            readable and easy for people to use.
+          </p>
+          <p>
+            Outside client work, I write tutorials, rebuild old ideas with newer tools, and work on side
+            projects like Flyball Hub.
+          </p>
+          <ul class="tag-list" aria-label="Technologies">
+            <li>React</li>
+            <li>Next.js</li>
+            <li>Tailwind</li>
+            <li>Astro</li>
+            <li>Shopify/Liquid</li>
+            <li>Sanity</li>
+            <li>Supabase</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--work">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2>Recent projects first, older work in context.</h2>
+          <a class="text-link" href="/work/">All Work</a>
+        </div>
+        <div class="featured-work-grid">
+          {featuredWork.map((item) => item && <PortfolioCard item={item} featured />)}
+        </div>
+        <div class="supporting-work-grid">
+          {supportingWork.map((item) => <PortfolioCard item={item} compact />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--journal">
+      <div class="container journal-panel">
+        <div class="journal-panel__intro">
+          <p class="eyebrow">Writing</p>
+          <h2>Tutorials, notes and the occasional project write-up.</h2>
+          <p>
+            Some posts are older WordPress or email-development notes, some are newer experiments. The aim is
+            the same: write down the thing clearly enough that it helps the next person.
+          </p>
+          {featuredPost && (
+            <a class="journal-feature" href={featuredPost.route}>
+              <span>Start with</span>
+              <strong>{featuredPost.title}</strong>
+              {featuredPost.date && <time datetime={featuredPost.date}>{formatDate(featuredPost.date)}</time>}
+            </a>
+          )}
+        </div>
+        <div class="home-post-list" aria-label="Latest posts">
+          {
+            latestPosts.map((post) => {
+              const image = imageForItem(post);
+              const date = formatDate(post.date);
+
+              return (
+                <article class="home-post">
+                  <a class="home-post__link" href={post.route}>
+                    {
+                      image && (
+                        <span class="home-post__image">
+                          <img src={image} alt="" width="360" height="260" loading="lazy" decoding="async" />
+                        </span>
+                      )
+                    }
+                    <span class="home-post__body">
+                      {date && <time class="home-post__meta" datetime={post.date}>{date}</time>}
+                      <h3 class="home-post__title">{post.title}</h3>
+                      {post.excerpt && <span class="home-post__excerpt">{post.excerpt}</span>}
+                    </span>
+                  </a>
+                </article>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section home-section--contact">
+      <div class="container home-contact">
+        <p class="eyebrow">Manchester, UK</p>
+        <h2>Useful web work, written up clearly.</h2>
+        <p>
+          I’m keeping this site as a home for portfolio notes, tutorials and the projects I’m building next.
+          If you’re here for work, start with the selected projects. If you’re here from a tutorial, the blog
+          is staying readable on purpose.
+        </p>
+        <div class="home-hero__actions">
+          <a class="button" href="/work/">Explore Work</a>
+          <a class="text-link" href="/blog/">Browse Posts</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,30 @@
+{
+  "contentType": "portfolio",
+  "wordpressId": 2397,
+  "title": "Flyball Hub - Next JS, Typescript, Supabase, PWA App",
+  "slug": "flyball-hub-next-js-typescript-supabase-pwa-app",
+  "route": "/portfolio/flyball-hub-next-js-typescript-supabase-pwa-app/",
+  "sourceUrl": "https://daltonwalsh.com/portfolio/flyball-hub-next-js-typescript-supabase-pwa-app/",
+  "status": "publish",
+  "date": "2025-12-14 12:59:47",
+  "modified": "2025-12-14 13:00:55",
+  "excerpt": "",
+  "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2025/12/flyballhub-website.webp",
+  "seo": {
+    "title": "Flyball Hub - Next JS, Typescript, Supabase, PWA App - Dalton Walsh",
+    "canonical": "https://daltonwalsh.com/portfolio/flyball-hub-next-js-typescript-supabase-pwa-app/",
+    "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2025/12/flyballhub-website.webp"
+  },
+  "bodySource": "liveHtml",
+  "sourceHtmlPath": "data/migration/raw/html/portfolio__flyball-hub-next-js-typescript-supabase-pwa-app.html",
+  "needsReview": false,
+  "codeBlockCount": 0,
+  "imageCount": 1,
+  "localMediaReferences": [
+    "/media/2025/12/flyballhub-website-1024x577.webp",
+    "/media/2025/12/flyballhub-website-300x169.webp",
+    "/media/2025/12/flyballhub-website-768x432.webp",
+    "/media/2025/12/flyballhub-website.webp"
+  ],
+  "bodyHtml": "<main class=\"main\"><section  class=\"cb-text-box cb-text-box6a10ae209c992 cb-text-box--type-one cb-text-box--align-left\" style=\"\"><div class=\"cb-text-box__container padding-top-md padding-bottom-md\"><div class=\"cb-text-box__text\"><h1>Flyball Hub &#8211; Next JS, Typescript, Supabase, PWA App</h1><p><img data-lazyloaded=\"1\" src=\"/media/2025/12/flyballhub-website.webp\" decoding=\"async\" class=\"aligncenter size-full wp-image-2398\" data-src=\"/media/2025/12/flyballhub-website.webp\" alt=\"Flyball Hub website screenshot\" width=\"1133\" height=\"638\" data-srcset=\"/media/2025/12/flyballhub-website.webp 1133w, /media/2025/12/flyballhub-website-300x169.webp 300w, /media/2025/12/flyballhub-website-1024x577.webp 1024w, /media/2025/12/flyballhub-website-768x432.webp 768w\" data-sizes=\"(max-width: 1133px) 100vw, 1133px\" / srcset=\"/media/2025/12/flyballhub-website.webp 1133w, /media/2025/12/flyballhub-website-300x169.webp 300w, /media/2025/12/flyballhub-website-1024x577.webp 1024w, /media/2025/12/flyballhub-website-768x432.webp 768w\"></p><p>For the last 6 months or so, I&#8217;ve been quietly working on a little side project that I&#8217;m now ready to announce. So I train and compete in the sport of Flyball with my two Border Collies, Sky and Floss. Flyball is an amazing sport, not just for the dogs, but also for the social aspect. Your Flyball team become part of your extended family.</p><p>I&#8217;m going to do a big write up here soon, but for the time being here&#8217;s the link to the marketing site <a href=\"https://www.flyballhub.com/\">https://www.flyballhub.com/</a>. I&#8217;m still working on it, I&#8217;ve spent most of my efforts working on the app itself, so the site is very much a work in progress.</p></div></div></section></main>"
+}

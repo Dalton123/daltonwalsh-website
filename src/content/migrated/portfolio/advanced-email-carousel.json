@@ -1,0 +1,26 @@
+{
+  "contentType": "portfolio",
+  "wordpressId": 1038,
+  "title": "Advanced Email Carousel",
+  "slug": "advanced-email-carousel",
+  "route": "/portfolio/advanced-email-carousel/",
+  "sourceUrl": "https://daltonwalsh.com/portfolio/advanced-email-carousel/",
+  "status": "publish",
+  "date": "2021-03-08 13:34:02",
+  "modified": "2022-05-03 09:07:05",
+  "excerpt": "Email carousel built for Gumtree",
+  "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/gumtree-carousel.png",
+  "seo": {
+    "description": "Building an advanced CSS carousel for a HTML email for Gumtree. Used checkbox hacking, CSS animations, fallbacks",
+    "title": "Advanced Email Carousel - Dalton Walsh",
+    "canonical": "https://daltonwalsh.com/portfolio/advanced-email-carousel/",
+    "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/gumtree-carousel.png"
+  },
+  "bodySource": "liveHtml",
+  "sourceHtmlPath": "data/migration/raw/html/portfolio__advanced-email-carousel.html",
+  "needsReview": false,
+  "codeBlockCount": 0,
+  "imageCount": 2,
+  "localMediaReferences": [],
+  "bodyHtml": "<main class=\"main\"><section  class=\"cb-text-box cb-text-box6a0fed6fd7bbb cb-text-box--type-one cb-text-box--align-left\" style=\"\"><div class=\"cb-text-box__container padding-top-none padding-bottom-sm\"><div class=\"cb-text-box__text\"><h1><img data-lazyloaded=\"1\" src=\"http://daltonwalsh.com/wp-content/uploads/2021/03/gumtree-carousel.png\" decoding=\"async\" class=\"aligncenter wp-image-1039 size-full\" data-src=\"http://daltonwalsh.com/wp-content/uploads/2021/03/gumtree-carousel.png\" alt=\"Screenshot of gumtree carousel in an email\" width=\"768\" height=\"645\" /></h1><h1>Advanced Email Carousel</h1><p>Gumtree came to us wanting to have a carousel in one of their emails and I was tasked to build it. If you have ever been an email dev, you will likely know the pain involved in building something like this. This was probably one of my most complex email builds, getting to work just right was very challenging but in the end came out looking and working really good.</p><h3>Checkbox hacking</h3><p>One of the more powerful tools in an email developers arsenal is a technique known as <a href=\"https://codeburst.io/awesome-checkbox-and-radio-button-css-hacks-a8c24fb15a95\">checkbox hacking</a>. It is basically a way of adding logic to an email, it’s used in place of languages like javascript that would normally be used to make something like a carousel. Using checkbox hacking effectively allows you to create interesting things like <a href=\"/blog/quirky-email-things/\">this</a> and this <a href=\"/portfolio/betsson/\">here</a>.</p><p>I remember one of the bigger challenges for this carousel was that it had two cards visible on desktop, and then it went to just one card for mobile. Lots of headaches were had trying to get that to work nicely on different browsers.</p><p><img data-lazyloaded=\"1\" src=\"//daltonwalsh.com/wp-content/uploads/2021/03/gumtree-carousel-mob.png\" decoding=\"async\" class=\"width-100 aligncenter wp-image-1040 size-full\" data-src=\"//daltonwalsh.com/wp-content/uploads/2021/03/gumtree-carousel-mob.png\" alt=\"Screenshot of gumtree carousel in an email on mobile\" width=\"699\" height=\"781\" /></p><h3>Fallback</h3><blockquote><p>An email is only as good as its fallback</p></blockquote><p>This quote is something I’ve heard in the email community over and over and it&#8217;s very true, especially when you have a rather large email list. This email would obviously only work in the most forgiving of browsers, so a fallback is required for other email clients.</p></div></div></section></main>"
+}

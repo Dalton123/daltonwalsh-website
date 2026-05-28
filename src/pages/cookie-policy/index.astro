@@ -1,0 +1,29 @@
+---
+import ProseContent from '../../components/ProseContent.astro';
+import Layout from '../../layouts/Layout.astro';
+import {
+  canonicalForRoute,
+  descriptionForItem,
+  getPage,
+  ogImageForItem,
+  titleForItem,
+} from '../../lib/content';
+
+const page = getPage('cookie-policy');
+---
+
+<Layout
+  title={titleForItem(page, 'Cookie Policy')}
+  description={descriptionForItem(page)}
+  canonical={canonicalForRoute('/cookie-policy/')}
+  ogImage={ogImageForItem(page)}
+>
+  <main id="main" class="page-main">
+    <section class="plain-page-hero">
+      <div class="container">
+        <h1>Cookie Policy</h1>
+      </div>
+    </section>
+    <ProseContent html={page?.bodyHtml} />
+  </main>
+</Layout>

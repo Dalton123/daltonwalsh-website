@@ -1,0 +1,43 @@
+---
+import ProseContent from '../../components/ProseContent.astro';
+import Layout from '../../layouts/Layout.astro';
+import {
+  canonicalForRoute,
+  descriptionForItem,
+  formatDate,
+  getBlogPosts,
+  ogImageForItem,
+  titleForItem,
+  type MigratedItem,
+} from '../../lib/content';
+
+export function getStaticPaths() {
+  return getBlogPosts().map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: MigratedItem;
+}
+
+const { post } = Astro.props;
+const date = formatDate(post.date);
+---
+
+<Layout
+  title={titleForItem(post)}
+  description={descriptionForItem(post)}
+  canonical={canonicalForRoute(post.route)}
+  ogImage={ogImageForItem(post)}
+  bodyClass="detail-template detail-template--blog"
+>
+  <main id="main" class="page-main">
+    <div class="detail-chrome">
+      <a class="detail-chrome__back" href="/blog/"><span aria-hidden="true">&larr;</span> Back to blog</a>
+      {date && <time class="detail-chrome__date" datetime={post.date}>{date}</time>}
+    </div>
+    <ProseContent html={post.bodyHtml} />
+  </main>
+</Layout>

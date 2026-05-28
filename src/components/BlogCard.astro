@@ -1,0 +1,28 @@
+---
+import { formatDate, imageForItem, type MigratedItem } from '../lib/content';
+
+interface Props {
+  post: MigratedItem;
+}
+
+const { post } = Astro.props;
+const image = imageForItem(post);
+const date = formatDate(post.date);
+---
+
+<article class="content-card content-card--blog">
+  <a class="content-card__link" href={post.route}>
+    {
+      image && (
+        <span class="content-card__image">
+          <img src={image} alt="" width="900" height="620" loading="lazy" decoding="async" />
+        </span>
+      )
+    }
+    <span class="content-card__body">
+      {date && <time class="content-card__meta" datetime={post.date}>{date}</time>}
+      <h2 class="content-card__title">{post.title}</h2>
+      {post.excerpt && <p class="content-card__excerpt">{post.excerpt}</p>}
+    </span>
+  </a>
+</article>

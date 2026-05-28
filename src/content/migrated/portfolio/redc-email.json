@@ -1,0 +1,30 @@
+{
+  "contentType": "portfolio",
+  "wordpressId": 743,
+  "title": "RED C HTML EMAIL",
+  "slug": "redc-email",
+  "route": "/portfolio/redc-email/",
+  "sourceUrl": "https://daltonwalsh.com/portfolio/redc-email/",
+  "status": "publish",
+  "date": "2021-02-21 13:02:38",
+  "modified": "2021-10-24 16:05:33",
+  "excerpt": "Responsive HTML email with hamburger navigation.",
+  "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/RedC_email_screenshot-700x486-1.png",
+  "seo": {
+    "description": "Creating an advanced hamburger navigation for a responsive HTML email using CSS and checkbox hacking techniques.",
+    "title": "RED C HTML EMAIL - Dalton Walsh",
+    "canonical": "https://daltonwalsh.com/portfolio/redc-email/",
+    "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/RedC_email_screenshot-700x486-1.png"
+  },
+  "bodySource": "liveHtml",
+  "sourceHtmlPath": "data/migration/raw/html/portfolio__redc-email.html",
+  "needsReview": false,
+  "codeBlockCount": 0,
+  "imageCount": 1,
+  "localMediaReferences": [
+    "/media/2021/03/RedC_email_screenshot-700x486-1-300x208.png",
+    "/media/2021/03/RedC_email_screenshot-700x486-1-768x533.png",
+    "/media/2021/03/RedC_email_screenshot-700x486-1.png"
+  ],
+  "bodyHtml": "<main class=\"main\"><section  class=\"cb-text-box cb-text-box6a0e34d6a01d0 cb-text-box--type-one cb-text-box--align-left\" style=\"\"><div class=\"cb-text-box__container padding-top-md padding-bottom-md\"><div class=\"cb-text-box__text\"><h1><img data-lazyloaded=\"1\" src=\"http://daltonwalsh.com/wp-content/uploads/2021/03/RedC_email_screenshot-700x486-1.png\" decoding=\"async\" class=\"aligncenter wp-image-1230 size-full\" data-src=\"http://daltonwalsh.com/wp-content/uploads/2021/03/RedC_email_screenshot-700x486-1.png\" alt=\"Red C HTML email\" width=\"931\" height=\"646\" data-srcset=\"/media/2021/03/RedC_email_screenshot-700x486-1.png 931w, /media/2021/03/RedC_email_screenshot-700x486-1-300x208.png 300w, /media/2021/03/RedC_email_screenshot-700x486-1-768x533.png 768w\" data-sizes=\"(max-width: 931px) 100vw, 931px\" / srcset=\"/media/2021/03/RedC_email_screenshot-700x486-1.png 931w, /media/2021/03/RedC_email_screenshot-700x486-1-300x208.png 300w, /media/2021/03/RedC_email_screenshot-700x486-1-768x533.png 768w\"></h1><h1>Red C HTML email</h1><p>Red C gave me the task of updating their emails so they would fall more in line with the new design of the website. This meant that I had to recode them all from the ground up, make them responsive and even include a “hamburger navigation menu” component on email clients that would support it.</p><p>The hamburger technique is achieved using <a href=\"https://css-tricks.com/the-checkbox-hack/\">checkboxes</a> and some conditional comments for Outlook and other more restricted clients. I talk more about the checkbox hacking technique <a href=\"/blog/quirky-email-things\">here</a>.</p><p>I also took the opportunity to add an animation to the email, just to make it a little more exciting for people.</p></div></div></section><section  class=\"cb-stats cb-stats6a0e34d6a0226 cb-stats--type-one\" style=\"\"><div class=\"cb-stats__container padding-top-md padding-bottom-md\"><h2 class=\"cb-stats__heading\">\nSkills used</h2><div class=\"cb-stats__stats-group\"><div class=\"cb-stats__stat\"><p class=\"cb-stats__stat--title\">Checkbox Hacking</p><div class=\"cb-stats__stat--bar\" style=\"\"><div class=\"cb-stats__stat--bar--progress\" data-value=\"84\" style=\"\"></div></div></div><div class=\"cb-stats__stat\"><p class=\"cb-stats__stat--title\">Advanced CSS</p><div class=\"cb-stats__stat--bar\" style=\"\"><div class=\"cb-stats__stat--bar--progress\" data-value=\"100\" style=\"\"></div></div></div></div></div></section></main>"
+}

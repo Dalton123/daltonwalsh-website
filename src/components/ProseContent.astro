@@ -1,0 +1,13 @@
+---
+import { cleanMigratedHtml } from '../lib/html';
+
+interface Props {
+  html?: string;
+  class?: string;
+}
+
+const { html = '', class: className = '' } = Astro.props;
+const cleanedHtml = cleanMigratedHtml(html);
+---
+
+<div class:list={['prose', 'migrated-content', className]} set:html={cleanedHtml} />

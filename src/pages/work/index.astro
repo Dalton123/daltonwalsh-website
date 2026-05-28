@@ -1,0 +1,40 @@
+---
+import PortfolioCard from '../../components/PortfolioCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import {
+  canonicalForRoute,
+  descriptionForItem,
+  getPage,
+  getPortfolioItems,
+  ogImageForItem,
+  titleForItem,
+} from '../../lib/content';
+
+const page = getPage('work');
+const items = getPortfolioItems();
+const intro = 'Selected frontend projects, with recent React, Next.js and personal work first and older WordPress/email work kept in context.';
+---
+
+<Layout
+  title={titleForItem(page, 'Work')}
+  description={intro}
+  canonical={canonicalForRoute('/work/')}
+  ogImage={ogImageForItem(page)}
+>
+  <main id="main" class="listing-page">
+    <section class="listing-hero">
+      <div class="container">
+        <p class="eyebrow">Work</p>
+        <h1>Portfolio</h1>
+        <p>{intro}</p>
+      </div>
+    </section>
+    <section class="listing-section">
+      <div class="container">
+        <div class="cards-grid cards-grid--portfolio">
+          {items.map((item) => <PortfolioCard item={item} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

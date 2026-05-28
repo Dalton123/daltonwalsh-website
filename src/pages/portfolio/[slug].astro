@@ -1,0 +1,43 @@
+---
+import ProseContent from '../../components/ProseContent.astro';
+import Layout from '../../layouts/Layout.astro';
+import {
+  canonicalForRoute,
+  descriptionForItem,
+  formatDate,
+  getPortfolioItems,
+  ogImageForItem,
+  titleForItem,
+  type MigratedItem,
+} from '../../lib/content';
+
+export function getStaticPaths() {
+  return getPortfolioItems().map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+interface Props {
+  item: MigratedItem;
+}
+
+const { item } = Astro.props;
+const date = formatDate(item.date);
+---
+
+<Layout
+  title={titleForItem(item)}
+  description={descriptionForItem(item)}
+  canonical={canonicalForRoute(item.route)}
+  ogImage={ogImageForItem(item)}
+  bodyClass="detail-template detail-template--portfolio"
+>
+  <main id="main" class="page-main">
+    <div class="detail-chrome">
+      <a class="detail-chrome__back" href="/work/"><span aria-hidden="true">&larr;</span> Back to work</a>
+      {date && <time class="detail-chrome__date" datetime={item.date}>{date}</time>}
+    </div>
+    <ProseContent html={item.bodyHtml} />
+  </main>
+</Layout>

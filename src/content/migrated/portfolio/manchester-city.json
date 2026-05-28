@@ -1,0 +1,26 @@
+{
+  "contentType": "portfolio",
+  "wordpressId": 1006,
+  "title": "Manchester City",
+  "slug": "manchester-city",
+  "route": "/portfolio/manchester-city/",
+  "sourceUrl": "https://daltonwalsh.com/portfolio/manchester-city/",
+  "status": "publish",
+  "date": "2021-03-08 10:41:58",
+  "modified": "2021-10-24 16:01:10",
+  "excerpt": "Hamburger Navigation in a responsive HTML email for Manchester City.",
+  "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/Screenshot-2020-01-16-at-11.40.59.png",
+  "seo": {
+    "description": "Talking about creating an advanced hamburger navigation in a responsive HTML email, built for Manchester City football club.",
+    "title": "Manchester City - Dalton Walsh",
+    "canonical": "https://daltonwalsh.com/portfolio/manchester-city/",
+    "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/Screenshot-2020-01-16-at-11.40.59.png"
+  },
+  "bodySource": "liveHtml",
+  "sourceHtmlPath": "data/migration/raw/html/portfolio__manchester-city.html",
+  "needsReview": false,
+  "codeBlockCount": 0,
+  "imageCount": 2,
+  "localMediaReferences": [],
+  "bodyHtml": "<main class=\"main\"><section  class=\"cb-text-box cb-text-box6a0fed72b4755 cb-text-box--type-one cb-text-box--align-left\" style=\"\"><div class=\"cb-text-box__container padding-top-none padding-bottom-sm\"><div class=\"cb-text-box__text\"><p><img data-lazyloaded=\"1\" src=\"http://daltonwalsh.com/wp-content/uploads/2021/03/Screenshot-2020-01-16-at-11.40.59.png\" decoding=\"async\" class=\"aligncenter wp-image-1007 size-full\" data-src=\"http://daltonwalsh.com/wp-content/uploads/2021/03/Screenshot-2020-01-16-at-11.40.59.png\" alt=\"Manchester City HTML email\" width=\"624\" height=\"397\" /></p><h1>Manchester City</h1><p>At the time, hamburger navigation in email was a very new thing and Manchester City came to us with the task of adding the technique to its email campaigns. The technique used to achieve this is known as checkbox hacking, I became an expert in this after creating many different uses of it like <a href=\"/portfolio/redc-email/\">this</a> and <a href=\"/blog/quirky-email-things/\">this</a>.</p><p>As this was a cutting edge technique at the time, it was pretty tricky to get it right and for it to work across all the popular email clients. Most importantly it needed to have a working fallback for where it simply wouldn’t work due to the limitations of certain email clients. If you’ve ever worked with email, you will know of the never ending list of limitations that come with the territory.</p><p><img data-lazyloaded=\"1\" src=\"//daltonwalsh.com/wp-content/uploads/2021/03/man-city.png\" decoding=\"async\" class=\"aligncenter size-full wp-image-1008\" data-src=\"//daltonwalsh.com/wp-content/uploads/2021/03/man-city.png\" alt=\"An example of how the hamburger navigation works within the Manchester City HTML email\" width=\"1024\" height=\"655\" /></p><p>In the end Manchester City was ecstatic with the result of all the hard work and it came out extremely well. Their emails came out so well that they even got recognised by Econsultancy <a href=\"https://econsultancy.com/why-manchester-city-s-emails-are-premier-league-quality/\">here</a>.<br />\nI am proud to have worked on them and I really learned a lot about making emails while doing so. Manchester City really liked to push the boat out with cool flashy emails so there was always a challenge and something new to learn. We added videos, carousels, checkbox hacking etc, all while going through an extensive QA each time to make sure they worked or at least had a good fallback to as many customers as possible. With Manchester City being a global brand, I had to test in popular Chinese and Arabic clients which added a lot of unexpected challenges to say the least.</p></div></div></section></main>"
+}

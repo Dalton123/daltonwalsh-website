@@ -1,0 +1,221 @@
+{
+  "generatedAt": "2026-05-26T13:51:10.044290+00:00",
+  "items": {
+    "pages": [
+      {
+        "title": "Blog",
+        "slug": "blog",
+        "route": "/blog/",
+        "path": "content/pages/blog.json"
+      },
+      {
+        "title": "cookie-policy",
+        "slug": "cookie-policy",
+        "route": "/cookie-policy/",
+        "path": "content/pages/cookie-policy.json"
+      },
+      {
+        "title": "Home page",
+        "slug": "home",
+        "route": "/",
+        "path": "content/pages/home.json"
+      },
+      {
+        "title": "Work",
+        "slug": "work",
+        "route": "/work/",
+        "path": "content/pages/work.json"
+      }
+    ],
+    "blog": [
+      {
+        "title": "AI Adventures: How I Built a Text-Based RPG",
+        "slug": "ai-adventures-how-i-built-a-text-based-rpg",
+        "route": "/blog/ai-adventures-how-i-built-a-text-based-rpg/",
+        "path": "content/blog/ai-adventures-how-i-built-a-text-based-rpg.json"
+      },
+      {
+        "title": "Aurora CSS Background Effect",
+        "slug": "aurora-css-background-effect",
+        "route": "/blog/aurora-css-background-effect/",
+        "path": "content/blog/aurora-css-background-effect.json"
+      },
+      {
+        "title": "3 easy ways to centre in CSS",
+        "slug": "centring-in-css",
+        "route": "/blog/centring-in-css/",
+        "path": "content/blog/centring-in-css.json"
+      },
+      {
+        "title": "Dynamically load content in WordPress with vanilla JS",
+        "slug": "dynamically-load-more-in-wordpress-with-js",
+        "route": "/blog/dynamically-load-more-in-wordpress-with-js/",
+        "path": "content/blog/dynamically-load-more-in-wordpress-with-js.json"
+      },
+      {
+        "title": "Glassmorphism",
+        "slug": "glassmorphism",
+        "route": "/blog/glassmorphism/",
+        "path": "content/blog/glassmorphism.json"
+      },
+      {
+        "title": "Improving the WP admin bar",
+        "slug": "improving-the-wordpress-admin-bar",
+        "route": "/blog/improving-the-wordpress-admin-bar/",
+        "path": "content/blog/improving-the-wordpress-admin-bar.json"
+      },
+      {
+        "title": "Incrementing numbers in CSS",
+        "slug": "incrementing-numbers-in-css",
+        "route": "/blog/incrementing-numbers-in-css/",
+        "path": "content/blog/incrementing-numbers-in-css.json"
+      },
+      {
+        "title": "Lightbox Tutorial With Swiper JS",
+        "slug": "lightbox-tutorial",
+        "route": "/blog/lightbox-tutorial/",
+        "path": "content/blog/lightbox-tutorial.json"
+      },
+      {
+        "title": "Multi Lightbox with Swiper JS",
+        "slug": "multi-lightbox-with-swiper-js",
+        "route": "/blog/multi-lightbox-with-swiper-js/",
+        "path": "content/blog/multi-lightbox-with-swiper-js.json"
+      },
+      {
+        "title": "My React Projects",
+        "slug": "my-react-projects",
+        "route": "/blog/my-react-projects/",
+        "path": "content/blog/my-react-projects.json"
+      },
+      {
+        "title": "My Top 10 Best VS Code Extensions",
+        "slug": "my-top-10-best-vs-code-extensions",
+        "route": "/blog/my-top-10-best-vs-code-extensions/",
+        "path": "content/blog/my-top-10-best-vs-code-extensions.json"
+      },
+      {
+        "title": "OH MY AI - Cool uses of Artificial Intelligence",
+        "slug": "oh-my-ai-cool-uses-of-artificial-intelligence",
+        "route": "/blog/oh-my-ai-cool-uses-of-artificial-intelligence/",
+        "path": "content/blog/oh-my-ai-cool-uses-of-artificial-intelligence.json"
+      },
+      {
+        "title": "Quirky Email Things",
+        "slug": "quirky-email-things",
+        "route": "/blog/quirky-email-things/",
+        "path": "content/blog/quirky-email-things.json"
+      },
+      {
+        "title": "Searching For Random",
+        "slug": "searching-for-random",
+        "route": "/blog/searching-for-random/",
+        "path": "content/blog/searching-for-random.json"
+      },
+      {
+        "title": "Hiding focus on click",
+        "slug": "tutorial-hiding-focus-on-click",
+        "route": "/blog/tutorial-hiding-focus-on-click/",
+        "path": "content/blog/tutorial-hiding-focus-on-click.json"
+      },
+      {
+        "title": "Tutorial - How to create a WordPress Plugin",
+        "slug": "tutorial-how-to-create-a-wordpress-plugin",
+        "route": "/blog/tutorial-how-to-create-a-wordpress-plugin/",
+        "path": "content/blog/tutorial-how-to-create-a-wordpress-plugin.json"
+      },
+      {
+        "title": "Useful CSS Generators",
+        "slug": "useful-css-generators",
+        "route": "/blog/useful-css-generators/",
+        "path": "content/blog/useful-css-generators.json"
+      },
+      {
+        "title": "Using the Intersection Observer",
+        "slug": "using-the-intersection-observer",
+        "route": "/blog/using-the-intersection-observer/",
+        "path": "content/blog/using-the-intersection-observer.json"
+      },
+      {
+        "title": "Website Update!",
+        "slug": "website-update",
+        "route": "/blog/website-update/",
+        "path": "content/blog/website-update.json"
+      },
+      {
+        "title": "Why AI gave us all whiplash",
+        "slug": "why-ai-gave-us-all-whiplash",
+        "route": "/blog/why-ai-gave-us-all-whiplash/",
+        "path": "content/blog/why-ai-gave-us-all-whiplash.json"
+      }
+    ],
+    "portfolio": [
+      {
+        "title": "Advanced Email Carousel",
+        "slug": "advanced-email-carousel",
+        "route": "/portfolio/advanced-email-carousel/",
+        "path": "content/portfolio/advanced-email-carousel.json"
+      },
+      {
+        "title": "Betsson",
+        "slug": "betsson",
+        "route": "/portfolio/betsson/",
+        "path": "content/portfolio/betsson.json"
+      },
+      {
+        "title": "eBay AU Catalogue",
+        "slug": "ebay-au-catalogue",
+        "route": "/portfolio/ebay-au-catalogue/",
+        "path": "content/portfolio/ebay-au-catalogue.json"
+      },
+      {
+        "title": "eBay banner ad",
+        "slug": "ebay-html-5-banners",
+        "route": "/portfolio/ebay-html-5-banners/",
+        "path": "content/portfolio/ebay-html-5-banners.json"
+      },
+      {
+        "title": "Flyball Hub - Next JS, Typescript, Supabase, PWA App",
+        "slug": "flyball-hub-next-js-typescript-supabase-pwa-app",
+        "route": "/portfolio/flyball-hub-next-js-typescript-supabase-pwa-app/",
+        "path": "content/portfolio/flyball-hub-next-js-typescript-supabase-pwa-app.json"
+      },
+      {
+        "title": "Gumtree",
+        "slug": "gumtree",
+        "route": "/portfolio/gumtree/",
+        "path": "content/portfolio/gumtree.json"
+      },
+      {
+        "title": "Manchester City",
+        "slug": "manchester-city",
+        "route": "/portfolio/manchester-city/",
+        "path": "content/portfolio/manchester-city.json"
+      },
+      {
+        "title": "Next JS 15 + Sanity: A Modern Counselling Website Build",
+        "slug": "next-js-website-wilkinsoncounselling",
+        "route": "/portfolio/next-js-website-wilkinsoncounselling/",
+        "path": "content/portfolio/next-js-website-wilkinsoncounselling.json"
+      },
+      {
+        "title": "Northern Bytes Flyball Team",
+        "slug": "northern-bytes-flyball-team",
+        "route": "/portfolio/northern-bytes-flyball-team/",
+        "path": "content/portfolio/northern-bytes-flyball-team.json"
+      },
+      {
+        "title": "RED C HTML EMAIL",
+        "slug": "redc-email",
+        "route": "/portfolio/redc-email/",
+        "path": "content/portfolio/redc-email.json"
+      },
+      {
+        "title": "The Lady Tiler",
+        "slug": "the-lady-tiler",
+        "route": "/portfolio/the-lady-tiler/",
+        "path": "content/portfolio/the-lady-tiler.json"
+      }
+    ]
+  }
+}

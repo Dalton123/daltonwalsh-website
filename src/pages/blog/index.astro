@@ -1,0 +1,40 @@
+---
+import BlogCard from '../../components/BlogCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import {
+  canonicalForRoute,
+  descriptionForItem,
+  getBlogPosts,
+  getPage,
+  ogImageForItem,
+  titleForItem,
+} from '../../lib/content';
+
+const page = getPage('blog');
+const posts = getBlogPosts();
+const intro = 'Tutorials, project notes and web development write-ups from frontend work, side projects and things I am learning.';
+---
+
+<Layout
+  title={titleForItem(page, 'Blog')}
+  description={intro}
+  canonical={canonicalForRoute('/blog/')}
+  ogImage={ogImageForItem(page)}
+>
+  <main id="main" class="listing-page">
+    <section class="listing-hero">
+      <div class="container">
+        <p class="eyebrow">Blog</p>
+        <h1>Latest posts</h1>
+        <p>{intro}</p>
+      </div>
+    </section>
+    <section class="listing-section">
+      <div class="container">
+        <div class="cards-grid cards-grid--blog">
+          {posts.map((post) => <BlogCard post={post} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

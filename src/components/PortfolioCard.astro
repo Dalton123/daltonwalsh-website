@@ -1,0 +1,31 @@
+---
+import { formatDate, imageForItem, type MigratedItem } from '../lib/content';
+
+interface Props {
+  item: MigratedItem;
+  featured?: boolean;
+  compact?: boolean;
+}
+
+const { item, featured = false, compact = false } = Astro.props;
+const image = imageForItem(item);
+const date = formatDate(item.date);
+---
+
+<article class:list={['content-card', 'content-card--portfolio', featured && 'content-card--featured', compact && 'content-card--compact']}>
+  <a class="content-card__link" href={item.route}>
+    {
+      image && (
+        <span class="content-card__image">
+          <img src={image} alt="" width="900" height="620" loading="lazy" decoding="async" />
+        </span>
+      )
+    }
+    <span class="content-card__body">
+      {date && <time class="content-card__meta" datetime={item.date}>{date}</time>}
+      <h2 class="content-card__title">{item.title}</h2>
+      {item.excerpt && <p class="content-card__excerpt">{item.excerpt}</p>}
+      <span class="content-card__cta" aria-hidden="true">View Project</span>
+    </span>
+  </a>
+</article>

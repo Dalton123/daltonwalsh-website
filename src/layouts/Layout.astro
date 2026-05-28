@@ -1,0 +1,122 @@
+---
+import '../styles/global.css';
+import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from '../lib/content';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  bodyClass?: string;
+}
+
+const {
+  title = SITE_NAME,
+  description = DEFAULT_DESCRIPTION,
+  canonical,
+  ogImage,
+  bodyClass = '',
+} = Astro.props;
+
+const canonicalUrl = new URL(canonical || Astro.url.pathname, SITE_URL).toString();
+const imageUrl = ogImage ? new URL(ogImage, SITE_URL).toString() : undefined;
+const pathname = Astro.url.pathname;
+const isWorkRoute = pathname.startsWith('/work/') || pathname.startsWith('/portfolio/');
+const isBlogRoute = pathname.startsWith('/blog/');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f0e7" />
+    <script is:inline>
+      (() => {
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.dataset.theme = 'dark';
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#15120f');
+          }
+        } catch {}
+      })();
+    </script>
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-brand" href="/">Dalton Walsh</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a class:list={['site-nav__link', isWorkRoute && 'is-active']} href="/work/" aria-current={isWorkRoute ? 'page' : undefined}>Work</a>
+          <a class:list={['site-nav__link', isBlogRoute && 'is-active']} href="/blog/" aria-current={isBlogRoute ? 'page' : undefined}>Blog</a>
+          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-theme-toggle>
+            <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M20.2 15.7A8.6 8.6 0 0 1 8.3 3.8a8.7 8.7 0 1 0 11.9 11.9Z"></path>
+              </svg>
+            </span>
+            <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"></path>
+              </svg>
+            </span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__colophon">
+          <a class="site-footer__brand" href="/">Dalton Walsh</a>
+          <p>Frontend developer writing about useful web work.</p>
+        </div>
+        <nav aria-label="Footer">
+          <a href="/work/">Work</a>
+          <a href="/blog/">Blog</a>
+          <a href="/cookie-policy/">Cookie Policy</a>
+        </nav>
+      </div>
+    </footer>
+    <script is:inline>
+      (() => {
+        const button = document.querySelector('[data-theme-toggle]');
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (!button) return;
+
+        const update = () => {
+          const isDark = document.documentElement.dataset.theme === 'dark';
+          button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          button.setAttribute('aria-pressed', String(isDark));
+          themeMeta?.setAttribute('content', isDark ? '#15120f' : '#f7f0e7');
+        };
+
+        button.addEventListener('click', () => {
+          const isDark = document.documentElement.dataset.theme === 'dark';
+          if (isDark) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.dataset.theme = 'dark';
+            localStorage.setItem('theme', 'dark');
+          }
+          update();
+        });
+
+        update();
+      })();
+    </script>
+  </body>
+</html>
