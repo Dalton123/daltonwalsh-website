@@ -11,7 +11,7 @@
   "excerpt": "A short tutorial on how to remove the focus ring when not using the keyboard.",
   "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2021/10/Hiding-Focus-On-Click.png",
   "seo": {
-    "title": "TUTORIAL - Easily hide focus rings on click with Javascript",
+    "title": "Hide Focus Rings on Click with JavaScript - Dalton Walsh",
     "description": "Tutorial on how to remove the focus ring when not using the keyboard while maintaining good accessibility practices for the modern web.",
     "canonical": "https://daltonwalsh.com/blog/tutorial-hiding-focus-on-click/",
     "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2021/10/Hiding-Focus-On-Click.png"

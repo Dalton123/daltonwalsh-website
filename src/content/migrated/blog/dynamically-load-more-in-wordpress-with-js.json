@@ -11,7 +11,7 @@
   "excerpt": "Use the Fetch and REST API's to load in content.",
   "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2022/04/load-more.gif",
   "seo": {
-    "title": "%title% %page%",
+    "title": "WordPress Load More with Vanilla JS - Dalton Walsh",
     "description": "WORDPRESS TUTORIAL – How to dynamically load in custom post type content, using only vanilla JS via the Fetch &amp; REST API's. No AJAX!",
     "canonical": "https://daltonwalsh.com/blog/dynamically-load-more-in-wordpress-with-js/",
     "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2022/04/load-more.gif"

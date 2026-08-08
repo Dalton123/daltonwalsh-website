@@ -11,7 +11,7 @@
   "excerpt": "Examples of some email innovations.",
   "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/email-code.png",
   "seo": {
-    "title": "%title% %page% %sep% The fun aspects of Email development!",
+    "title": "Interactive HTML Email Examples with CSS - Dalton Walsh",
     "description": "A blog post in which I talk about some of the fun things I've built in the past, to be used in email campaigns. (HTML Emails, CSS, animation)",
     "canonical": "https://daltonwalsh.com/blog/quirky-email-things/",
     "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/email-code.png"
