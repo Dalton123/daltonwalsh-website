@@ -7,6 +7,47 @@ const dist = path.join(root, 'dist');
 const contentRoot = path.join(root, 'src/content/migrated');
 const reportPath = path.join(root, 'reports/launch-readiness-report.md');
 
+const expectedMetadata = {
+  '/blog/': { title: 'Frontend Development Blog & Tutorials - Dalton Walsh' },
+  '/work/': { title: 'Frontend Development Portfolio & Case Studies - Dalton Walsh' },
+  '/cookie-policy/': {
+    title: 'Cookie & Privacy Policy - Dalton Walsh',
+    description:
+      'Learn how DaltonWalsh.com uses cookies and other tracking technologies, the types of cookies involved, and how you can control them.',
+  },
+  '/blog/glassmorphism/': {
+    title: 'Glassmorphism CSS Tutorial - Dalton Walsh',
+    description:
+      'Learn how to create a glassmorphism effect with HTML and CSS using a semi-transparent background, border, shadow and backdrop blur.',
+  },
+  '/portfolio/betsson/': { title: 'Betsson Interactive Hotspot Email - Dalton Walsh' },
+  '/portfolio/gumtree/': { title: 'Gumtree for Business WordPress Website - Dalton Walsh' },
+  '/blog/dynamically-load-more-in-wordpress-with-js/': {
+    title: 'WordPress Load More with Vanilla JS - Dalton Walsh',
+  },
+  '/blog/multi-lightbox-with-swiper-js/': {
+    title: 'Multiple Lightboxes with Swiper JS - Dalton Walsh',
+  },
+  '/blog/my-top-10-best-vs-code-extensions/': {
+    title: '10 Best VS Code Extensions for Web Developers - Dalton Walsh',
+  },
+  '/blog/useful-css-generators/': {
+    title: 'Useful Free CSS Generators for Web Developers - Dalton Walsh',
+  },
+  '/blog/quirky-email-things/': {
+    title: 'Interactive HTML Email Examples with CSS - Dalton Walsh',
+  },
+  '/blog/tutorial-hiding-focus-on-click/': {
+    title: 'Hide Focus Rings on Click with JavaScript - Dalton Walsh',
+  },
+  '/blog/using-the-intersection-observer/': {
+    title: 'Fade In on Scroll with Intersection Observer - Dalton Walsh',
+  },
+  '/portfolio/next-js-website-wilkinsoncounselling/': {
+    title: 'Wilkinson Counselling Website Case Study - Dalton Walsh',
+  },
+};
+
 async function readJson(file) {
   return JSON.parse(await fs.readFile(file, 'utf8'));
 }
@@ -48,6 +89,25 @@ function extractAttrs(html, attr) {
   const re = new RegExp(`\\s${attr}=(["'])(.*?)\\1`, 'gi');
   for (const match of html.matchAll(re)) values.push(match[2]);
   return values;
+}
+
+function decodeHtmlText(value) {
+  return value
+    .replaceAll('&amp;', '&')
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&quot;', '"')
+    .replaceAll('&#39;', "'")
+    .replaceAll('&#x27;', "'");
+}
+
+function extractMetadata(html) {
+  const titles = [...html.matchAll(/<title>([\s\S]*?)<\/title>/gi)].map((match) =>
+    decodeHtmlText(match[1]).replace(/\s+/g, ' ').trim()
+  );
+  const descriptionTags = html.match(/<meta\b[^>]*\bname=["']description["'][^>]*>/gi) ?? [];
+  const descriptions = descriptionTags.flatMap((tag) => extractAttrs(tag, 'content')).map(decodeHtmlText);
+  return { titles, descriptions };
 }
 
 function stripCodeSamples(html) {
@@ -123,6 +183,73 @@ async function main() {
     if (!(await exists(file))) missingRoutes.push(route);
   }
   check('expected routes', missingRoutes.length === 0, missingRoutes.length ? missingRoutes.join(', ') : 'all expected routes exist');
+
+  const generatedMetadata = generatedFiles
+    .filter(({ html }) => /<html\b/i.test(html))
+    .map(({ file, html }) => ({
+      file,
+      ...extractMetadata(html),
+    }));
+  const incompleteMetadata = generatedMetadata.filter(
+    ({ titles, descriptions }) =>
+      titles.length !== 1 || !titles[0] || descriptions.length !== 1 || !descriptions[0]
+  );
+  check(
+    'metadata complete',
+    incompleteMetadata.length === 0,
+    incompleteMetadata.length
+      ? incompleteMetadata.map(({ file }) => path.relative(dist, file)).join(', ')
+      : 'every generated page has one non-empty title and description'
+  );
+
+  const titleOwners = new Map();
+  for (const { file, titles } of generatedMetadata) {
+    if (titles.length !== 1 || !titles[0]) continue;
+    const owners = titleOwners.get(titles[0]) ?? [];
+    owners.push(path.relative(dist, file));
+    titleOwners.set(titles[0], owners);
+  }
+  const duplicateTitles = [...titleOwners.entries()].filter(([, owners]) => owners.length > 1);
+  check(
+    'titles unique',
+    duplicateTitles.length === 0,
+    duplicateTitles.length
+      ? duplicateTitles.map(([title, owners]) => `${title}: ${owners.join(', ')}`).join('; ')
+      : `${titleOwners.size} generated titles are unique`
+  );
+
+  const invalidTitles = generatedMetadata.filter(({ titles }) => {
+    if (titles.length !== 1) return false;
+    const title = titles[0];
+    const brandCount = title.match(/Dalton Walsh/g)?.length ?? 0;
+    return /%(?:title|sitename|sitedesc|sep|page)%/i.test(title) || brandCount !== 1;
+  });
+  check(
+    'title branding and tokens',
+    invalidTitles.length === 0,
+    invalidTitles.length
+      ? invalidTitles.map(({ file }) => path.relative(dist, file)).join(', ')
+      : 'all generated titles contain branding once and no Yoast template tokens'
+  );
+
+  const unexpectedMetadata = [];
+  for (const [route, expected] of Object.entries(expectedMetadata)) {
+    const html = await fs.readFile(routeFile(route), 'utf8');
+    const actual = extractMetadata(html);
+    if (actual.titles[0] !== expected.title) {
+      unexpectedMetadata.push(`${route} title: ${actual.titles[0] || '(missing)'}`);
+    }
+    if (expected.description && actual.descriptions[0] !== expected.description) {
+      unexpectedMetadata.push(`${route} description: ${actual.descriptions[0] || '(missing)'}`);
+    }
+  }
+  check(
+    'approved metadata copy',
+    unexpectedMetadata.length === 0,
+    unexpectedMetadata.length
+      ? unexpectedMetadata.join('; ')
+      : `${Object.keys(expectedMetadata).length} approved routes match exact metadata copy`
+  );
 
   const mediaRefs = new Set();
   const brokenMedia = [];

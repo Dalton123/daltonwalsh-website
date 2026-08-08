@@ -11,7 +11,7 @@
   "excerpt": "Tutorial on using Intersection Observer to fade in content.",
   "featuredImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/using-interaction-observer1.png",
   "seo": {
-    "title": "How to use Intersection Observer to fade in content with JS",
+    "title": "Fade In on Scroll with Intersection Observer - Dalton Walsh",
     "description": "Quick and easy tutorial on using the Intersection Observer API to fade in content. (JS, javascript, tutorial, HTML, CSS, SCSS)",
     "canonical": "https://daltonwalsh.com/blog/using-the-intersection-observer/",
     "openGraphImage": "https://daltonwalsh.com/wp-content/uploads/2021/03/using-interaction-observer1.png"
