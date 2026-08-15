@@ -1006,6 +1006,11 @@ html[data-theme="dark"] .theme-toggle__icon--sun {
   margin-block: 34px 14px;
 }
 
+.migrated-content h2.migrated-heading--legacy-h3 {
+  font-size: 1.75rem;
+  margin-block: 34px 14px;
+}
+
 .migrated-content :where(p, li) {
   color: color-mix(in srgb, var(--ink) 78%, var(--muted));
 }
@@ -1377,6 +1382,10 @@ pre code {
   }
 
   .migrated-content h3 {
+    font-size: 1.45rem;
+  }
+
+  .migrated-content h2.migrated-heading--legacy-h3 {
     font-size: 1.45rem;
   }
 }

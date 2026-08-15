@@ -79,6 +79,25 @@ function generatedHas(files, pattern) {
   return files.some(({ html }) => pattern.test(html));
 }
 
+function headingText(html) {
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&(?:nbsp|ensp|emsp|thinsp|zwnj|zwj|#0*160|#x0*a0);/gi, ' ')
+    .replace(/&(?:#(?:x[a-f0-9]+|\d+)|[a-z0-9]+);/gi, 'x')
+    .trim();
+}
+
+function isNoIndex(html) {
+  return /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*noindex)/i.test(html);
+}
+
+function generatedRoute(file) {
+  const relative = path.relative(dist, file).replaceAll(path.sep, '/');
+  if (relative === 'index.html') return '/';
+  if (relative.endsWith('/index.html')) return `/${relative.slice(0, -'index.html'.length)}`;
+  return `/${relative}`;
+}
+
 async function main() {
   const pageFiles = await listJson(path.join(contentRoot, 'pages'));
   const blogFiles = await listJson(path.join(contentRoot, 'blog'));
@@ -123,6 +142,22 @@ async function main() {
     if (!(await exists(file))) missingRoutes.push(route);
   }
   check('expected routes', missingRoutes.length === 0, missingRoutes.length ? missingRoutes.join(', ') : 'all expected routes exist');
+
+  const invalidH1Routes = generatedMarkupFiles
+    .filter(({ html }) => /<html\b/i.test(html) && !isNoIndex(html))
+    .flatMap(({ file, html }) => {
+      const headings = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
+      const meaningfulHeadings = headings.filter((match) => headingText(match[1]));
+      if (headings.length === 1 && meaningfulHeadings.length === 1) return [];
+      return [`${generatedRoute(file)} (${headings.length} H1, ${meaningfulHeadings.length} meaningful)`];
+    });
+  check(
+    'indexable H1 semantics',
+    invalidH1Routes.length === 0,
+    invalidH1Routes.length
+      ? invalidH1Routes.join(', ')
+      : 'every indexable generated route has exactly one non-empty, non-image-only H1'
+  );
 
   const mediaRefs = new Set();
   const brokenMedia = [];
