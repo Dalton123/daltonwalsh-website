@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const contentRoot = path.join(root, 'src/content/migrated');
 const reportPath = path.join(root, 'reports/launch-readiness-report.md');
+const siteUrl = new URL('https://daltonwalsh.com');
 
 async function readJson(file) {
   return JSON.parse(await fs.readFile(file, 'utf8'));
@@ -56,14 +57,28 @@ function stripCodeSamples(html) {
 
 function normalizeInternalPath(href) {
   if (!href || href.startsWith('#')) return '';
-  if (/^(mailto:|tel:|https?:\/\/|\/\/)/i.test(href)) return '';
-  const clean = href.split('#')[0].split('?')[0];
-  if (!clean || clean === '/') return '/';
-  return clean.endsWith('/') || path.extname(clean) ? clean : `${clean}/`;
+  if (/^(mailto:|tel:)/i.test(href)) return '';
+
+  let url;
+  try {
+    url = new URL(href, siteUrl);
+  } catch {
+    return '';
+  }
+
+  if (!['http:', 'https:'].includes(url.protocol)) return '';
+  if (url.hostname.replace(/^www\./i, '') !== siteUrl.hostname) return '';
+  return url.pathname || '/';
+}
+
+function isCanonicalInternalPath(href) {
+  const internalPath = normalizeInternalPath(href);
+  return !internalPath || internalPath === '/' || internalPath.endsWith('/') || Boolean(path.extname(internalPath));
 }
 
 async function internalTargetExists(href) {
   if (href === '/') return exists(path.join(dist, 'index.html'));
+  if (href === '/404/') return exists(path.join(dist, '404.html'));
   if (href.startsWith('/media/') || href.startsWith('/assets/')) {
     return exists(path.join(dist, href.slice(1)));
   }
@@ -127,6 +142,7 @@ async function main() {
   const mediaRefs = new Set();
   const brokenMedia = [];
   const brokenLinks = [];
+  const nonCanonicalLinks = [];
   for (const { file, html } of generatedMarkupFiles) {
     for (const src of [...extractAttrs(html, 'src'), ...extractAttrs(html, 'srcset')]) {
       const refs = src
@@ -139,6 +155,9 @@ async function main() {
     for (const href of extractAttrs(html, 'href')) {
       const normalized = normalizeInternalPath(href);
       if (!normalized) continue;
+      if (!isCanonicalInternalPath(href)) {
+        nonCanonicalLinks.push(`${path.relative(dist, file)} -> ${href}`);
+      }
       if (!(await internalTargetExists(normalized))) {
         brokenLinks.push(`${path.relative(dist, file)} -> ${href}`);
       }
@@ -151,6 +170,11 @@ async function main() {
 
   check('images load', brokenMedia.length === 0, brokenMedia.length ? brokenMedia.slice(0, 10).join(', ') : `${mediaRefs.size} generated media references exist`);
   check('internal links', brokenLinks.length === 0, brokenLinks.length ? brokenLinks.slice(0, 10).join(', ') : 'no broken internal links found');
+  check(
+    'canonical internal links',
+    nonCanonicalLinks.length === 0,
+    nonCanonicalLinks.length ? nonCanonicalLinks.slice(0, 10).join(', ') : 'all internal route links use trailing slashes'
+  );
 
   const commentUiPattern = /(?:comments-area|comment-respond|comment-form|wpdcom|wpdiscuz|id=["']comments["'])/i;
   check('comment UI removed', !commentUiPattern.test(allGeneratedHtml), 'no WordPress comment UI markers in generated HTML');

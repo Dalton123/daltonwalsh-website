@@ -1,5 +1,5 @@
 # Launch Readiness Report
-Generated: 2026-05-27T09:36:46.878Z
+Generated: 2026-08-17T08:35:28.862Z
 ## Status
 Astro build output passes the launch-readiness checks.
 ## Checks
@@ -9,8 +9,9 @@ Astro build output passes the launch-readiness checks.
 | blog count | pass | 20 blog JSON files |
 | portfolio count | pass | 11 portfolio JSON files |
 | expected routes | pass | all expected routes exist |
-| images load | pass | 278 generated media references exist |
+| images load | pass | 276 generated media references exist |
 | internal links | pass | no broken internal links found |
+| canonical internal links | pass | all internal route links use trailing slashes |
 | comment UI removed | pass | no WordPress comment UI markers in generated HTML |
 | load-more controls removed | pass | no generated load-more control markup |
 | YouTube embeds | pass | YouTube source content renders as iframe embeds |
