@@ -2,3 +2,7 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+
+# Local agent worktrees and MCP logs
+.worktrees/
+logs/
